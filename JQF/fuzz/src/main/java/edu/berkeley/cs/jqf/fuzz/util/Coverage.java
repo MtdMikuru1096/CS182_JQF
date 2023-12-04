@@ -91,11 +91,15 @@ public class Coverage implements TraceEventVisitor, ICoverage<Counter> {
      */
     public void handleEvent(TraceEvent e) {
         e.applyVisitor(this);
+        System.out.println("Thread " +"<"+ Thread.currentThread().getName()+ ">"
+        + " produced an event " +"<"+ e+ ">");
     }
 
     @Override
     public void visitBranchEvent(BranchEvent b) {
         counter.increment1(b.getIid(), b.getArm());
+
+       System.out.println("Event ID: " + b.getIid() + ", branch arm: " + b.getArm());
     }
 
     @Override
@@ -249,3 +253,4 @@ public class Coverage implements TraceEventVisitor, ICoverage<Counter> {
         return counter;
     }
 }
+

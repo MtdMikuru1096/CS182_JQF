@@ -80,7 +80,11 @@ public class NoGuidance implements Guidance {
      */
     @Override
     public InputStream getInput() {
-        return Guidance.createInputStream(() -> random.nextInt(256));
+        
+        // step4, set QF to generate the integer 200 for every iteration
+        return Guidance.createInputStream(() -> 200); 
+        
+        //return Guidance.createInputStream(() -> random.nextInt(256));
     }
 
     /**
@@ -123,6 +127,7 @@ public class NoGuidance implements Guidance {
         if (numTrials > 10 && ((float) numDiscards)/((float) (numTrials)) > maxDiscardRatio) {
             throw new GuidanceException("Assumption is too strong; too many inputs discarded");
         }
+        
     }
 
     /**
