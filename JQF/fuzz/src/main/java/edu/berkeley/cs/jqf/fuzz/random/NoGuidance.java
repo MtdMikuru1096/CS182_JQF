@@ -80,7 +80,7 @@ public class NoGuidance implements Guidance {
      */
     @Override
     public InputStream getInput() {
-        
+
         // step4, set QF to generate the integer 200 for every iteration
         return Guidance.createInputStream(() -> 200); 
         
